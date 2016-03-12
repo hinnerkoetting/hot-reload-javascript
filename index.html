@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Try to hot reload javascript</title>
+<script src="lib/hotswap.js"></script>
+<script src="javascript.js"></script>
+</head>
+
+<body>
+<input type="button" value="Reload JS" onclick="hotswap.refreshJs(['javascript.js']);"/>
+<input type="button" value="Execute JS" onclick="doSomething();"/>
+</body>
+
+</html>
