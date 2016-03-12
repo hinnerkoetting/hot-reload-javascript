@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Try to hot reload javascript</title>
+<script src="lib/hotswap.js"></script>
+<script src="lib/socket.io.js"></script>
+<script src="javascript.js"></script>
+
+<script>
+  var socket = io();
+  socket.on('filechange', function (message) {    
+    if (message.endsWith('js')) {
+      console.log('Reloading file ' + message);
+      hotswap.refreshJs([message]);
+      document.getElementById('message').innerHTML = 'Javascript reloaded';
+      setTimeout(function() {
+        document.getElementById('message').innerHTML = '';
+      }, 2000);
+    }
+  });
+</script>
+</head>
+
+<body>
+<input type="button" value="Execute JS" onclick="doSomething();"/>
+<div id="message">
+</div>
+</body>
+
+</html>
